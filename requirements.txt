@@ -1,0 +1,9 @@
+finvizfinance
+yfinance
+pandas
+openpyxl
+python-telegram-bot
+APScheduler
+python-dotenv
+requests
+pyyaml

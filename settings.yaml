@@ -1,0 +1,57 @@
+# ============================================
+# Short Squeeze Bot — Strategy Settings
+# Edit these values to tune the strategy.
+# No code change needed — just save this file.
+# ============================================
+
+strategy:
+  # Short Float tiers to scan (Finviz screener)
+  short_float_tiers:
+    - "Over 20%"
+    - "Over 25%"
+    - "Over 30%"
+
+  # Minimum Short Ratio (days to cover)
+  min_short_ratio: 4.0
+
+  # Lookback window for highest-high entry signal (in trading days)
+  high_lookback_days: 100
+
+  # Maximum % distance below 100-day high
+  # 0.15 = stock must be within 15% of its 100-day high
+  max_distance_from_high_pct: 0.15
+
+  # Downtrend filter: SMA window
+  # Stock must be ABOVE this SMA to pass
+  sma_window: 50
+
+# ============================================
+# Halal Compliance Check
+# ============================================
+halal:
+  mode: "manual_link"
+  # Musaffa has working per-stock public pages
+  musaffa_link_template: "https://musaffa.com/stock/{ticker}/"
+  # Zoya is app-based; link to its screener search instead of a dead page
+  zoya_link_template: "https://zoya.finance/stocks"
+# ============================================
+# Scheduling
+# ============================================
+schedule:
+  # Timezone for all scheduled jobs (Tashkent)
+  timezone: "Asia/Tashkent"
+
+  # Weekend full scan — Sunday evening, fresh before the week
+  weekly_scan_day: "sun"
+  weekly_scan_time: "19:00"   # 7:00 PM Tashkent
+
+  # Daily breakout check — weekday mornings, uses prior US close
+  daily_check_time: "08:00"   # 8:00 AM Tashkent
+  daily_check_days: "mon-fri"
+
+# ============================================
+# Output
+# ============================================
+output:
+  excel_file: "data/signals.xlsx"
+  log_file: "logs/bot.log"
